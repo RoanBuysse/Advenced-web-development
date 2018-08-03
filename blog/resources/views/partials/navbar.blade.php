@@ -24,13 +24,8 @@
                             <a class="" href="{{ route("login") }}"> {{__("Log in")}}</a>
                             <a class="" href="{{ route("register") }}">{{__("Register")}}</a>
                           
-    
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+
                
-               
-                    <li></li>
                     @else
     
                     <li>
@@ -48,6 +43,28 @@
                         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
     
                             <a class="dropdown-item" href="{{ url('/admin') }}">{{__("Dashboard")}}</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+    
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endif
+
+                    @if(Auth::user()->role_id==2)
+                    <li class="btn user dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle"href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{Auth::user()->name}}
+                            <span class="caret"></span>
+                        </a>
+    
+                        <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
+    
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 Logout
