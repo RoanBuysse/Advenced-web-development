@@ -9,6 +9,6 @@ class BlogCategory extends Model
     protected $fillable=['nameNl', 'nameEn'];
    public function blog()
    {
-    return $this->belongsToMany(News::class, 'blog_blog_category');  
+    return $this->belongsToMany(News::class, 'blog_blog_categories');  
    }
 }

@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Blog;
 use App\BlogCategory;
 use App\Photo;
+use Session;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BlogController extends Controller
 {
@@ -26,14 +28,14 @@ class BlogController extends Controller
     public function create()
     { 
         if(LaravelLocalization::getCurrentLocale()=='nl')
-        { $blogcategories  = BlogCategory::pluck('nameNl','id');
+        { $blog_categories  = BlogCategory::pluck('nameNl','id');
          
         }
         if(LaravelLocalization::getCurrentLocale()=='en')
-        { $blogcategories = BlogCategory::pluck('nameEn','id');
+        { $blog_categories = BlogCategory::pluck('nameEn','id');
          
         }
-        return view('Blog.create', compact('blogcategories'));
+        return view('Blog.create', compact('blog_categories'));
     }
         
     
@@ -93,17 +95,17 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         if(LaravelLocalization::getCurrentLocale()=='nl')
-        { $blogcategories  = BlogCategory::pluck('nameNl','id');
+        { $blog_categories  = BlogCategory::pluck('nameNl','id');
          
         }
      
         if(LaravelLocalization::getCurrentLocale()=='en')
-        { $blogcategories  = BlogCategory::pluck('nameEn','id');
+        { $blog_categories  = BlogCategory::pluck('nameEn','id');
        
         }
         
         
-        return view('Blog.edit', compact('blog', 'blogcategories'));
+        return view('Blog.edit', compact('blog', 'blog_categories'));
     }
 
     public function update(Request $request, $id)
@@ -149,7 +151,7 @@ class BlogController extends Controller
         }
         Session::flash('flash_message', 'Blog item succesfully updated');
 
-        return redirect('/admin');
+        return redirect('/');
        
         
     }

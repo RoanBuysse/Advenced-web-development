@@ -29,7 +29,7 @@ class CreateBlogsTable extends Migration
              $table->integer('photo_id')->nullable();
              $table->integer('category_id')->nullable();
 
-
+             $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('Layouts.LayoutFront')
+@extends('Layouts.LayoutBack')
 @section ('content')
 
 
@@ -22,10 +22,9 @@
         
         <div class="form-group">
             
-            {!! Form::label("blog_category_id", __("Category"))!!}
+            {!! Form::label("blogs_category_id", __("Category"))!!}
             
-            {!! Form::select("blog_category_id[]", $blogcategories, null, ['id' => 'tag_list','class'=> 'form-control']) !!}
-            
+            {!! Form::select("blogs_category_id[]", $blog_categories, null, ['id' => 'tag_list','class'=> 'form-control']) !!}
 
         </div>
 

@@ -39,6 +39,11 @@ Route::group(
             Route::delete('/blog/{id}', 'BlogController@destroy')->name('deleteblog');
 
             //category
-            Route::resource('categories', 'BlogCategoryController' );
-            Route::get('categories/{id}', ['as' => 'Category.show', 'uses' => 'BlogCategoryController@show']);
+            Route::get('/categories/create', 'BlogCategoryController@create')->name('createblogCategory');
+            Route::post('/categories/store', 'BlogCategoryController@store')->name('saveblogCategory');
+            Route::get('/categories/{id}', 'BlogCategoryController@show')->name('showblogCategory');
+            Route::get('/categories/{id}/edit', 'BlogCategoryController@edit')->name('editblogCategory');
+            Route::patch('/categories/{id}/edit', 'BlogCategoryController@update')->name('updateblogCategory');
+            Route::delete('/categories/{id}', 'BlogCategoryController@destroy')->name('deleteblogCategory');
+
     });

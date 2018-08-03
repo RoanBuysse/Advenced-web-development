@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\BlogCategory;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
-
+use Session;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class BlogCategoryController extends Controller
 {
     public function __construct()
@@ -31,8 +32,8 @@ class BlogCategoryController extends Controller
     {
 
         $rules = [
-            'nameNl' => ['required', 'max:200', 'unique:blogcategories'],
-            'nameEn' => ['required', 'max:200', 'unique:blogcategories'],
+            'nameNl' => ['required', 'max:200', 'unique:blog_categories'],
+            'nameEn' => ['required', 'max:200', 'unique:blog_categories'],
            ];
            
     
