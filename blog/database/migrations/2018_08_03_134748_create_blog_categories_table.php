@@ -17,6 +17,7 @@ class CreateBlogCategoriesTable extends Migration
             $table->increments('id');
             $table->string('nameNl');
             $table->string('nameEn');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

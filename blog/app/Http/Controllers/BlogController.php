@@ -162,13 +162,43 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $blog->delete($request->all());
         $categoryIds = $request->blogs_category_id;
+        // $blog->category()->detach($categoryIds);
+        // if($blog->photo){
+        //     unlink('/images/blog/'.$blog->photo->photo);
+        //     $blog->photo()->delete('photo');
+        // }
+        Session::flash('flash_message', 'Blog item succesfully deleted');
+        return redirect('/');
+    }
+
+    public function permdestroy(Request $request, $id)
+    {
+        $blog = Blog::findOrFail($id);
+        $blog->forceDelete($request->all());
+        $categoryIds = $request->blogs_category_id;
         $blog->category()->detach($categoryIds);
         if($blog->photo){
             unlink('/images/blog/'.$blog->photo->photo);
-            $blog->photo()->delete('photo');
+            $blog->photo()->forceDelete('photo');
         }
         Session::flash('flash_message', 'Blog item succesfully deleted');
         return redirect('/');
     }
+
+
+    public function restore(Request $request, $id)
+    {
+        $blog = Blog::findOrFail($id);
+        $blog->restore($request->all());
+        $categoryIds = $request->blogs_category_id;
+        $blog->category()->detach($categoryIds);
+        // if($blog->photo){
+        //     unlink('/images/blog/'.$blog->photo->photo);
+        //     $blog->photo()->restore('photo');
+        // }
+        Session::flash('flash_message', 'Blog item succesfully deleted');
+        return redirect('/');
+    }
+
 
 }
