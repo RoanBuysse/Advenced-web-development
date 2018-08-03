@@ -11,14 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ],
+    function()
+    {
+            Route::get('/', function () {
+                return view('index');
+            });
 
-Auth::routes();
+            Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+            Route::get('/home', 'HomeController@index')->name('home');
 
 
-// users
-Route::resource('users', 'UserController');
+            // users
+            Route::resource('users', 'UserController');
+    });
