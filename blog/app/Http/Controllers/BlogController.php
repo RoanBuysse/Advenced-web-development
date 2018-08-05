@@ -26,6 +26,13 @@ class BlogController extends Controller
         
     }
 
+    public function indexsoftdeleted(Request $request)
+    {
+        $blog = Blog::onlyTrashed()->get();
+        return view('softdeleted', compact('blog'));
+        
+    }
+
     public function create()
     { 
         if(LaravelLocalization::getCurrentLocale()=='nl')

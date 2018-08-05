@@ -57,4 +57,9 @@ Route::group(
             Route::get('/about', function () {
                 return view('about');})->name('about');
 
+            //users
+            // Route::resource('users', 'UserController');
+            Route::get('/users', 'UserController@index')->name('users');
+            Route::patch('/users/{id}/edit', 'UserController@update')->name('userUpdate');
+
     });

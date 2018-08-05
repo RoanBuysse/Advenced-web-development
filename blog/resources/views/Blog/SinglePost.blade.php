@@ -45,42 +45,51 @@
                       @foreach($blog->category as $category)
                       <p class="card-text float-right mt-2"><small class="text-muted"><a class="card-text"href="{{ route('showblogCategory', $category->id) }}">{{$category->nameNl}}</a></small></p>
                       @endforeach
-                      <p class="card-text float-left mt-2"><small class="text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
+                      <p class="card-text float-left mt-2"><small class="text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</p></small>
                       @endif 
                     
                         
 
                   
-                    {{--  dutch  --}}
+                    {{--  eng  --}}
                     @if(LaravelLocalization::getCurrentLocale()=='en')
                       <h3 class="card-title">{{$blog->titleEn}}</h3>
-                      <p class="card-text">{!!$blog->bodyEn!!}/p>
+                      <p class="card-text">{!!$blog->bodyEn!!}</p>
                       @foreach($blog->category as $category)
                       <p class="card-text float-right mt-2"><small class="text-muted"><a class="card-text"href="{{ route('showblogCategory', $category->id) }}">{{$category->nameNl}}</a></small></p>
                       @endforeach
-                      <p class="card-text float-left mt-2"><small class="text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
+                      <p class="card-text float-left mt-2"><small class="text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</p></small>
                       @endif 
 
                       {{--  buttons  --}}
                       
                     @if(Auth::user()->role_id==1)
-                      <div class="form-group">
+                    <hr>
+                        <br>
+                        <br>
+                      <div class="card-footer">
+                        
                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                                   {{ __("Delete this blog")}}
                               </button>
-                      </div>
-                      <a class="" href="{{ route("editblog", ['id' => $blog->id]) }}"> {{__("Edit this blog")}}</a>
+                      
+                      <a href="{{ route("editblog", ['id' => $blog->id]) }}" class="btn btn-primary float_right">{{__("Edit this blog")}}</a>
+                    </div>
                     @endif
                     
                     @if(Auth::user()->role_id==2)
               
                         @if(Auth::user()->id==$blog->user_id)
-                          <div class="form-group">
+                        <hr>
+                        <br>
+                        <br>
+                          <div class="card-footer">
                               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                                       {{ __("Delete this blog")}}
                                   </button>
                           </div>
                           <a href="{{ route("editblog", ['id' => $blog->id]) }}" class="btn btn-primary float_right">{{__("Edit this blog")}}</a>
+                        </div>
                         @endif
                     @endif
 
@@ -93,20 +102,29 @@
                   <section class="mt-5 card" id="comment">
                   @foreach ($blog->comments as $comment)
                   <article>
-
+                        <h2>{{__("Comments")}}</h2>
                     {{date('d-m-Y', strtotime($blog->created_at))}}
                     @if(LaravelLocalization::getCurrentLocale()=='nl')
-                    {{$comment->bodyNl}}
+                    
+                    <h3>{{$comment->bodyNl}}</h3>
+                    <br>
+                    <hr>
+
+
                     @endif
 
                     @if(LaravelLocalization::getCurrentLocale()=='en')
-                    {{$comment->bodyEn}}
+              
+                    <h3>{{$comment->bodyEn}}</h3>
+                    br
+                    <hr>
                     @endif
 
                   </article>
                   @endforeach
                 </section>
-                 
+                 <br>
+                 <br>
 
                 {{--  comment form  --}}
                 <div class="card">
