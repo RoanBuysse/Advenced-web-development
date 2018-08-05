@@ -26,6 +26,7 @@ class CreateBlogsTable extends Migration
              $table->string('titleEn')->unique();
              $table->text('bodyEn');
              
+             $table->integer('user_id')->nullable();
              $table->integer('photo_id')->nullable();
              $table->integer('category_id')->nullable();
 

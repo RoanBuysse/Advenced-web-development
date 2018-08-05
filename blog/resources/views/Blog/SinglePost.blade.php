@@ -10,7 +10,27 @@
             </div>    
 </div>
 
-<main class="container scene_element scene_element--fadeinup">
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">{{__("Are you certain?")}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__("Close")}}</button>
+                {!! Form::open(['method' => 'DELETE', 'action' => ['BlogController@destroy', $blog->id]]) !!} {!! Form::submit("Delete Blog", ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!} 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<main class="container">
 
    
                 <div class="card mb-3">
@@ -40,7 +60,29 @@
                       @endforeach
                       <p class="card-text float-left mt-2"><small class="text-muted">{{date('d-m-Y', strtotime($blog->created_at))}}</p>
                       @endif 
+
+                      {{--  buttons  --}}
+                      
+                    @if(Auth::user()->role_id==1)
+                      <div class="form-group">
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                  {{ __("Delete this blog")}}
+                              </button>
+                      </div>
+                      <a class="" href="{{ route("editblog", ['id' => $blog->id]) }}"> {{__("Edit this blog")}}</a>
+                    @endif
                     
+                    @if(Auth::user()->role_id==2)
+              
+                        @if(Auth::user()->id==$blog->user_id)
+                          <div class="form-group">
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+                                      {{ __("Delete this blog")}}
+                                  </button>
+                          </div>
+                          <a class="" href="{{ route("editblog", ['id' => $blog->id]) }}"> {{__("Edit this blog")}}</a>
+                        @endif
+                    @endif
 
 
 

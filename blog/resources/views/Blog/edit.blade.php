@@ -86,7 +86,7 @@
                 <div class="form-group">
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
                                 {{ __("Delete this blog")}}
-                            </button>
+                </button>
                 </div>
             </div>
     

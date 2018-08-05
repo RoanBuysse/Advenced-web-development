@@ -90,22 +90,22 @@ class BlogCategoryController extends Controller
         }
 
 
-        public function permdestroy($id)
-        {
-            $category = BlogCategory::findOrFail($id);
-            $category->forcedelete();
-            Session::flash('flash_message', 'BlogCategory item succesfully deleted');
-            return redirect('/categories');
-        }
+        // public function permdestroy($id)
+        // {
+        //     $category = BlogCategory::findOrFail($id);
+        //     $category->forcedelete();
+        //     Session::flash('flash_message', 'BlogCategory item succesfully deleted');
+        //     return redirect('/categories');
+        // }
         
 
-        public function restore($id)
-        {
-            $category = BlogCategory::findOrFail($id);
-            $category->restore();
-            Session::flash('flash_message', 'BlogCategory item succesfully deleted');
-            return redirect('/categories');
-        }
+        // public function restore($id)
+        // {
+        //     $category = BlogCategory::findOrFail($id);
+        //     $category->restore();
+        //     Session::flash('flash_message', 'BlogCategory item succesfully deleted');
+        //     return redirect('/categories');
+        // }
 
 
 }

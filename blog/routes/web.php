@@ -31,6 +31,7 @@ Route::group(
             Route::resource('users', 'UserController');
 
             //blogs
+            Route::get('/', 'BlogController@index')->name('blogIndex');
             Route::get('/blog/create', 'BlogController@create')->name('createblog');
             Route::post('/blog/store', 'BlogController@store')->name('saveblog');
             Route::get('/blog/{id}', 'BlogController@show')->name('showblog');
@@ -41,6 +42,7 @@ Route::group(
                 Route::post('blog/{id}/comments', 'CommentsController@store')->name('savecomment');
 
             //category
+            Route::get('/categories', 'BlogCategoryController@index')->name('blogCategoryIndex');
             Route::get('/categories/create', 'BlogCategoryController@create')->name('createblogCategory');
             Route::post('/categories/store', 'BlogCategoryController@store')->name('saveblogCategory');
             Route::get('/categories/{id}', 'BlogCategoryController@show')->name('showblogCategory');

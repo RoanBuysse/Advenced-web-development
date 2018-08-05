@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Flynsarmy\CsvSeeder\CsvSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RoleTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(BlogsTableSeeder::class);
     }
 }

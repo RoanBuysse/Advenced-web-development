@@ -13,7 +13,7 @@ class Blog extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'titleNl', 'bodyNl', 'titleEn', 'bodyEn', 'photo_id', 
+        'titleNl', 'bodyNl', 'titleEn', 'bodyEn', 'photo_id', 'user_id'
         // (category)
     ];
 
@@ -31,6 +31,11 @@ class Blog extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    
+    public function user()
+    {
+        $this->belongsTo(User::class);
     }
     
 

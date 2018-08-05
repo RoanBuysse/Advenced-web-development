@@ -8,6 +8,7 @@ use App\Blog;
 use App\BlogCategory;
 use App\Photo;
 use Session;
+use Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -61,6 +62,8 @@ class BlogController extends Controller
        $this->validate($request, $rules);
        
        $input = $request->all();
+      
+       
        if ($file = $request->file('photo_id')) {
         $name = $file->getClientOriginalName();
         $file->move('/images/blog', $name);
@@ -68,8 +71,11 @@ class BlogController extends Controller
         $input['photo_id'] = $photo->id;
     }
 
+      
+    
+       
 
-
+       $input['user_id'] = Auth::user()->id;
        $blog = Blog::create($input);
        
         if ($categoryIds = $request->blogs_category_id){
