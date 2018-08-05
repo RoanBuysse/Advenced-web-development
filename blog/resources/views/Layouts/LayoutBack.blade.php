@@ -32,7 +32,8 @@
      <div class="m-scene " id="app">
         
         @include('partials.navbar')
-
+        @include('partials.side')
+    
         <div class="flex-center position-ref full-height">
 
            
@@ -40,7 +41,8 @@
             <div class="content py-2 fill-min">
 
                 @yield('content')
-            
+                
+
             </div>
         </div>
      </div>

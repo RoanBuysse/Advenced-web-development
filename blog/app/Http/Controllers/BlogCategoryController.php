@@ -21,6 +21,8 @@ class BlogCategoryController extends Controller
         return view('Category.index', compact('categories'));
     }
 
+    
+
 
     public function create()
     {   

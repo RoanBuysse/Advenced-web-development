@@ -10471,6 +10471,35 @@ a.text-dark:focus {
   }
 }
 
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #e9ecef;
+  overflow-x: hidden;
+  margin-top: 100px;
+  margin-left: 20px;
+  padding-right: 20px;
+}
+
+.sidenav ul {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.mijnProg {
+  width: 100%;
+}
+
+.navbar {
+  z-index: 1;
+}
+
 .message {
   border: 1px solid #ccc;
   padding: 10px;

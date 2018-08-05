@@ -80,7 +80,7 @@
                                       {{ __("Delete this blog")}}
                                   </button>
                           </div>
-                          <a class="" href="{{ route("editblog", ['id' => $blog->id]) }}"> {{__("Edit this blog")}}</a>
+                          <a href="{{ route("editblog", ['id' => $blog->id]) }}" class="btn btn-primary float_right">{{__("Edit this blog")}}</a>
                         @endif
                     @endif
 

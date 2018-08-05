@@ -50,4 +50,11 @@ Route::group(
             Route::patch('/categories/{id}/edit', 'BlogCategoryController@update')->name('updateblogCategory');
             Route::delete('/categories/{id}', 'BlogCategoryController@destroy')->name('deleteblogCategory');
 
+            //dashboard
+            Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
+            //about
+            Route::get('/about', function () {
+                return view('about');})->name('about');
+
     });

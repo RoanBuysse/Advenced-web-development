@@ -1,7 +1,6 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{--  <img src="/images/mini_logo.png" class="img-fluid" alt="" width="65">  --}}
+          
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -10,9 +9,9 @@
     
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul id="nav" class="navbar-nav mr-auto">
+                
     
-                   
+                    <a class="nav-link" href="{{ url('/') }}">{{__("Home")}}
     
                     <!-- Authentication Links -->
                     @guest
@@ -21,18 +20,19 @@
     
                       
     
-                            <a class="" href="{{ route("login") }}"> {{__("Log in")}}</a>
-                            <a class="" href="{{ route("register") }}">{{__("Register")}}</a>
+                            <a class="nav-link" href="{{ route("login") }}"> {{__("Log in")}}</a>
+                            <a class="nav-link" href="{{ route("register") }}">{{__("Register")}}</a>
                           
 
                
                     @else
     
-                    <li>
-                        <a  class="nav-link nava" href="{{URL::to('/')}}/{{LaravelLocalization::getCurrentLocale()}}/likes')">{{__("My liked items")}}</a>
-                    </li>
+                   
+                        <a  class="nav-link" href="{{URL::to('/')}}/{{LaravelLocalization::getCurrentLocale()}}/likes')">{{__("My liked items")}}</a>
+                    
                 
                     @if(Auth::user()->role_id==1)
+                    <a class="nav-link" href="{{ route("about") }}"> {{__("About")}}</a>
                     <li class="btn user dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle"href="#" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -42,7 +42,7 @@
     
                         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
     
-                            <a class="dropdown-item" href="{{ url('/admin') }}">{{__("Dashboard")}}</a>
+                            <a class="dropdown-item" href="{{ route('dashboard') }}">{{__("Dashboard")}}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                 Logout
@@ -56,13 +56,16 @@
                     @endif
 
                     @if(Auth::user()->role_id==2)
+
+                    <a class="nav-link" href="{{ route("about") }}"> {{__("About")}}</a>
+
                     <li class="btn user dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle"href="#" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             {{Auth::user()->name}}
                             <span class="caret"></span>
                         </a>
-    
+                        
                         <div  class="dropdown-menu" aria-labelledby="navbarDropdown">
     
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -78,7 +81,7 @@
                     @endif
                     @endguest
     
-                </ul>
+               
     
     
     

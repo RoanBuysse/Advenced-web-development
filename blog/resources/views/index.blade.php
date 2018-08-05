@@ -18,14 +18,14 @@
        
             </div>    
       </div>  --}}
-      
-<main class="container m-page scene_element scene_element--fadeinup">
+
+<main class="container mt-4  pt-4 m-page scene_element scene_element--fadeinup">
 
    
 
     <article class="row result">
             <div class="card-columns col-sm">
-                    @foreach($blog as $blogs)
+                    @foreach($blog as $blog)
                     <div class="card" style="width: 18rem; margin-bottom: 3rem;">
                        
                             {{--  <img class="card-img-top" v-bind:src="'/images/news/' + news.photo.photo" alt="news photo"/>  --}}
