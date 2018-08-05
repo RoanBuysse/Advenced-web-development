@@ -37,6 +37,8 @@ Route::group(
             Route::get('/blog/{id}/edit', 'BlogController@edit')->name('editblog');
             Route::patch('/blog/{id}/edit', 'BlogController@update')->name('updateblog');
             Route::delete('/blog/{id}', 'BlogController@destroy')->name('deleteblog');
+                //comment
+                Route::post('blog/{id}/comments', 'CommentsController@store')->name('savecomment');
 
             //category
             Route::get('/categories/create', 'BlogCategoryController@create')->name('createblogCategory');

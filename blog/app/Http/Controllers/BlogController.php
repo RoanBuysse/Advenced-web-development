@@ -15,7 +15,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('isSubscriber',['only' => ['create','edit']]);
+        $this->middleware('auth',['only' => ['create','edit']]);
     }
 
     public function index(Request $request)
@@ -85,7 +85,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
-        return view('Blog.SinglePost.blade', compact('blog'));
+        return view('Blog.SinglePost', compact('blog'));
       
         
     }

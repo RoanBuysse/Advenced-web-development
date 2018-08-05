@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Blog extends Model
 {
     use SoftDeletes;
@@ -26,5 +27,11 @@ class Blog extends Model
     {
         return $this->belongsToMany(BlogCategory::class, 'blog_blog_categories');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
 
 }
